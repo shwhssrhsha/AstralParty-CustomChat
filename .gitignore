@@ -1,0 +1,31 @@
+# 构建产物
+bin/
+obj/
+app/
+dist/
+versions/
+.tmp/
+.dotnet/
+
+# 运行期文件
+ipc/
+*.log
+
+# 备份
+*.bak
+*.bak-*
+*.bak-ipc
+
+# 不公开的本机资源 / 第三方内容
+refs/
+*.zip
+*.xlsx
+生成对应表.py
+生成对应表.py.bak
+交接文档与工作记录.md
+目标与规划.md
+NuGet.Config
+
+# Python
+__pycache__/
+*.pyc
