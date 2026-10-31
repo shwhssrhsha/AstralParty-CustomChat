@@ -3,10 +3,23 @@
 $ErrorActionPreference = "Stop"
 $root = $PSScriptRoot
 $dotnet = Join-Path $root "..\..\..\tools\dotnet\dotnet.exe"
-$gameMods = "D:\steam\steamapps\common\Astral Party\8vJXn6CN\AstralParty_ModLoader\mods\QuickChatToolbox"
+
+# locate game mods dir: env QCT_GAME_MODS_DIR > Steam registry > fail
+$gameMods = $env:QCT_GAME_MODS_DIR
+if ([string]::IsNullOrEmpty($gameMods)) {
+    $steam = (Get-ItemProperty "HKCU:\Software\Valve\Steam" -Name SteamPath -ErrorAction SilentlyContinue).SteamPath
+    if ($steam) {
+        $steam = $steam -replace "/", "\"
+        $gameMods = Join-Path $steam "steamapps\common\Astral Party\8vJXn6CN\AstralParty_ModLoader\mods\QuickChatToolbox"
+    }
+}
 
 if (-not (Test-Path $dotnet)) { Write-Host "dotnet not found: $dotnet"; exit 1 }
-if (-not (Test-Path $gameMods)) { Write-Host "game mods dir not found: $gameMods"; exit 1 }
+if ([string]::IsNullOrEmpty($gameMods) -or -not (Test-Path (Split-Path $gameMods -Parent))) {
+    Write-Host "game mods dir not found; set QCT_GAME_MODS_DIR to the ...\AstralParty_ModLoader\mods\QuickChatToolbox folder"
+    exit 1
+}
+New-Item -ItemType Directory -Force -Path $gameMods | Out-Null
 
 Write-Host "=== 1/4 build plugin ==="
 Set-Location (Join-Path $root "src\QuickChatToolbox")

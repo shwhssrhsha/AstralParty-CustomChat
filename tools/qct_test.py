@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """链路测试：写 cmd.txt，等待游戏内插件回 result.txt。
 
-IPC 目录与窗口/插件一致：QCT_IPC_DIR -> %LOCALAPPDATA%\\QuickChatToolbox\\ipc -> %TEMP%\\AstralQuickChatToolbox\\ipc
+IPC 目录与窗口/插件一致：QCT_IPC_DIR -> %LOCALAPPDATA%\\QuickChatToolbox\\ipc -> %TEMP%\\QuickChatToolbox\\ipc
 
 用法:
   python qct_test.py ping

@@ -46,7 +46,7 @@ IPC 目录解析顺序（窗口与插件完全一致）：
 
 1. 环境变量 `QCT_IPC_DIR`
 2. `%LOCALAPPDATA%\QuickChatToolbox\ipc`
-3. `%TEMP%\AstralQuickChatToolbox\ipc`
+3. `%TEMP%\QuickChatToolbox\ipc`
 
 ## 从源码构建
 

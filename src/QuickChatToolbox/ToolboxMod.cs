@@ -25,7 +25,7 @@ namespace QuickChatToolbox
         /// IPC 目录候选（必须与外部窗口 Ipc.ResolveDir 完全一致）：
         ///   1. 环境变量 QCT_IPC_DIR
         ///   2. %LOCALAPPDATA%\QuickChatToolbox\ipc（主路径，与游戏/窗口位置无关）
-        ///   3. %TEMP%\AstralQuickChatToolbox\ipc（回退）
+        ///   3. %TEMP%\QuickChatToolbox\ipc（回退）
         /// </summary>
         private static string ResolveDir()
         {
@@ -52,7 +52,7 @@ namespace QuickChatToolbox
             catch
             {
             }
-            list.Add(Path.Combine(Path.GetTempPath(), "AstralQuickChatToolbox", "ipc"));
+            list.Add(Path.Combine(Path.GetTempPath(), "QuickChatToolbox", "ipc"));
             foreach (string d in list)
             {
                 try
